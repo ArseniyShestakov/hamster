@@ -1,0 +1,22 @@
+BaseUrl: "http://arseniyshestakov.com"
+LanguageCode: "en-us"
+Title: "Personal website"
+Theme: "beg"
+
+Params:
+  Author: "Arseniy Shestakov"
+  DateForm: "02 January 2006"
+  GoogleAnalyticsUserID: "UA-71686871-1"
+  Twitter: "arsenyshestakov"
+  Github: "arseniyshestakov"
+  ShowRelatedPost: False
+  Disqus: "arseniyshestakov"
+  SyntaxHighlightTheme: "github.min.css"
+
+Indexes:
+  tag: "tags"
+
+permalinks:
+  post: /:year/:month/:day/:slug/
+
+MetadataFormat: "yaml"

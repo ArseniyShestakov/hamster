@@ -1,0 +1,1 @@
+[Hugo](http://gohugo.io/) configuration for my website arseniyshestakov.com 
