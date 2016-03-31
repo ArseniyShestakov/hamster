@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal website </title>
-    <link>http://arseniyshestakov.com/</link>
+    <link>http://arseniyshestakov.com/tags/intel/</link>
     <language>en-us</language>
     <author>Arseniy Shestakov</author>
     <rights>(C) 2016</rights>
@@ -95,22 +95,6 @@ echo 1 &amp;gt; /sys/bus/pci/rescan
 &lt;p&gt;If you interested to see what hardware I use as well as QEMU configuration &lt;a href=&#34;https://gist.github.com/ArseniyShestakov/dc152d080c65ebaa6781&#34;&gt;you can find it on gist&lt;/a&gt;. Since I just finish major upgrade VM still using BIOS, but, but once everything settle down I&amp;rsquo;ll switch to use EFI/OVMF. For general information about GPU passthrough you can check &lt;a href=&#34;http://vfio.blogspot.com/&#34;&gt;Alex Williamson blog&lt;/a&gt; and &lt;a href=&#34;https://www.redhat.com/mailman/listinfo/vfio-users&#34;&gt;vfio-users mailing list&lt;/a&gt;.&lt;/p&gt;
 </description>
         </item>
-      
-    
-      
-        <item>
-          <title>Experimental static website</title>
-          <link>http://arseniyshestakov.com/2015/12/23/experimental-static-website/</link>
-          <pubDate>Wed, 23 Dec 2015 00:00:00 UTC</pubDate>
-          <author>Arseniy Shestakov</author>
-          <guid>http://arseniyshestakov.com/2015/12/23/experimental-static-website/</guid>
-          <description>&lt;p&gt;This is my first attempt to create personal website using &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m used wordpress for almost ten years and made many projects with it, but for personal website that will be rarely updated it&amp;rsquo;s feels like overkill and ability to host it on GitHub Pages is nice advantage too.&lt;/p&gt;
-</description>
-        </item>
-      
-    
       
     
 

@@ -5,9 +5,97 @@
     <link>http://arseniyshestakov.com/post/</link>
     <language>en-us</language>
     <author>Arseniy Shestakov</author>
-    <rights>(C) 2015</rights>
-    <updated>2015-12-23 00:00:00 &#43;0000 UTC</updated>
+    <rights>(C) 2016</rights>
+    <updated>2016-03-31 00:00:00 &#43;0000 UTC</updated>
 
+    
+      
+        <item>
+          <title>How To: pass GPU to VM and back without X restart</title>
+          <link>http://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/</link>
+          <pubDate>Thu, 31 Mar 2016 00:00:00 UTC</pubDate>
+          <author>Arseniy Shestakov</author>
+          <guid>http://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/</guid>
+          <description>
+
+&lt;p&gt;TLDR: If you use FOSS drivers with DRI3 you now can do this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use GPU on Linux for any 3D applications.&lt;/li&gt;
+&lt;li&gt;Pass it into VM and do anything with it.&lt;/li&gt;
+&lt;li&gt;Once VM is shutdown use GPU on host again.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Everything without reboot and X server restart.&lt;/p&gt;
+
+&lt;h2 id=&#34;long-story:78fead626a340942cdf0c7bfb7c93cd1&#34;&gt;Long story:&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;m was using GPU passthrough with VFIO for two years now and happy with it. Still for me as Linux nerd that like to play around with FOSS drivers there was huge downside that once GPU used in VM it&amp;rsquo;s was impossible to use it on host before reboot.&lt;/p&gt;
+
+&lt;p&gt;One year ago I did several attempts to make it work on Ubuntu 14.04 with 3.19 kernel, but failed. Radeon kernel module load and unload didn&amp;rsquo;t end up well after few retries leaving me with locked host. I tested many different ideas, but none work and best I could achieve is getting GPU work after X server restart. Other VFIO users reported the same.&lt;/p&gt;
+
+&lt;p&gt;Now I&amp;rsquo;m finally switch to Kubuntu 16.04 and after few days managed to get it working with stock everything and &lt;a href=&#34;https://gist.github.com/cspicer/5e09d9ef382aa816435c&#34;&gt;ACS kernel patch&lt;/a&gt;. It&amp;rsquo;s hard to say what exactly make it work, but suppose it&amp;rsquo;s DRI3. My current setup looks that way:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Host boot with UEFI. Used Legacy BOIS / CSM before.&lt;/li&gt;
+&lt;li&gt;Host monitors connected to iGPU. One connected to dGPU as well for usage in VM.&lt;/li&gt;
+&lt;li&gt;GPUs attached to radeon and intel kernel drivers. No blacklisting.&lt;/li&gt;
+&lt;li&gt;Radeon and Intel DDX drivers is set use DRI3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;/etc/X11/xorg.conf.d/10-intel.conf:
+Section &amp;quot;Device&amp;quot;
+    Identifier &amp;quot;Intel Graphics&amp;quot;
+    Driver &amp;quot;intel&amp;quot;
+    Option &amp;quot;DRI&amp;quot; &amp;quot;3&amp;quot;
+EndSection
+
+/etc/X11/xorg.conf.d/20-radeon.conf:
+Section &amp;quot;Device&amp;quot;
+    Identifier &amp;quot;Radeon&amp;quot;
+    Driver &amp;quot;radeon&amp;quot;
+    Option &amp;quot;DRI3&amp;quot; &amp;quot;1&amp;quot;
+EndSection
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;DRI_PRIME=1 to use dGPU on host:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;DRI_PRIME=1 glxinfo | grep OpenGL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To use in VM dGPU unbind from Radeon and bind to VFIO:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;1002 6719&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/new_id
+echo &amp;quot;0000:01:00.0&amp;quot; &amp;gt; /sys/bus/pci/devices/0000:01:00.0/driver/unbind
+echo &amp;quot;0000:01:00.0&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/bind
+echo &amp;quot;1002 6719&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/remove_id
+
+echo &amp;quot;1002 aa80&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/new_id
+echo &amp;quot;0000:01:00.1&amp;quot; &amp;gt; /sys/bus/pci/devices/0000:01:00.1/driver/unbind
+echo &amp;quot;0000:01:00.1&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/bind
+echo &amp;quot;1002 aa80&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/remove_id
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;After VM shutdown dGPU pass it back to Radeon.
+Most reliable way I found is device removal and PCI rescan:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;echo 1 &amp;gt; /sys/bus/pci/devices/0000:01:00.0/remove
+echo 1 &amp;gt; /sys/bus/pci/devices/0000:01:00.1/remove
+echo 1 &amp;gt; /sys/bus/pci/rescan
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So far I did several VM restarts switching GPU between host and VM and it&amp;rsquo;s looks solid. I didn&amp;rsquo;t tested everything, but Unigine Valley on both Windows VM and Linux as well as few games work stable. Hope others will be able to reproduce it with different hardware.&lt;/p&gt;
+
+&lt;p&gt;If you interested to see what hardware I use as well as QEMU configuration &lt;a href=&#34;https://gist.github.com/ArseniyShestakov/dc152d080c65ebaa6781&#34;&gt;you can find it on gist&lt;/a&gt;. Since I just finish major upgrade VM still using BIOS, but, but once everything settle down I&amp;rsquo;ll switch to use EFI/OVMF. For general information about GPU passthrough you can check &lt;a href=&#34;http://vfio.blogspot.com/&#34;&gt;Alex Williamson blog&lt;/a&gt; and &lt;a href=&#34;https://www.redhat.com/mailman/listinfo/vfio-users&#34;&gt;vfio-users mailing list&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+      
     
       
         <item>
