@@ -9,13 +9,13 @@
 
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="Experimental static website &middot; Personal website">
+<meta property="og:title" content="How To: pass GPU to VM and back without X restart &middot; Personal website">
 
 <meta property="og:site_name" content="Personal website">
 
 <title>
     
-    Experimental static website
+    How To: pass GPU to VM and back without X restart
     
 </title>
 
@@ -89,19 +89,93 @@
             <header>
                 <div class="post-date">
                     <span class="glyphicon glyphicon-calendar"></span>
-                    <time datetime="23 December 2015">
-                        23 December 2015
+                    <time datetime="31 March 2016">
+                        31 March 2016
                     </time>
                 </div>
                 <h1 class="post-title">
-                    <a href="http://arseniyshestakov.com/2015/12/23/experimental-static-website/">Experimental static website</a>
+                    <a href="http://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/">How To: pass GPU to VM and back without X restart</a>
                 </h1>
             </header>
 
             <div class="post-content">
-                <p>This is my first attempt to create personal website using <a href="http://gohugo.io/">Hugo</a>.</p>
+                
 
-<p>I&rsquo;m used wordpress for almost ten years and made many projects with it, but for personal website that will be rarely updated it&rsquo;s feels like overkill and ability to host it on GitHub Pages is nice advantage too.</p>
+<p>TLDR: If you use FOSS drivers with DRI3 you now can do this:</p>
+
+<ul>
+<li>Use GPU on Linux for any 3D applications.</li>
+<li>Pass it into VM and do anything with it.</li>
+<li>Once VM is shutdown use GPU on host again.</li>
+</ul>
+
+<p>Everything without reboot and X server restart.</p>
+
+<h2 id="long-story:78fead626a340942cdf0c7bfb7c93cd1">Long story:</h2>
+
+<p>I&rsquo;m was using GPU passthrough with VFIO for two years now and happy with it. Still for me as Linux nerd that like to play around with FOSS drivers there was huge downside that once GPU used in VM it&rsquo;s was impossible to use it on host before reboot.</p>
+
+<p>One year ago I did several attempts to make it work on Ubuntu 14.04 with 3.19 kernel, but failed. Radeon kernel module load and unload didn&rsquo;t end up well after few retries leaving me with locked host. I tested many different ideas, but none work and best I could achieve is getting GPU work after X server restart. Other VFIO users reported the same.</p>
+
+<p>Now I&rsquo;m finally switch to Kubuntu 16.04 and after few days managed to get it working with stock everything and <a href="https://gist.github.com/cspicer/5e09d9ef382aa816435c">ACS kernel patch</a>. It&rsquo;s hard to say what exactly make it work, but suppose it&rsquo;s DRI3. My current setup looks that way:</p>
+
+<ul>
+<li>Host boot with UEFI. Used Legacy BOIS / CSM before.</li>
+<li>Host monitors connected to iGPU. One connected to dGPU as well for usage in VM.</li>
+<li>GPUs attached to radeon and intel kernel drivers. No blacklisting.</li>
+<li>Radeon and Intel DDX drivers is set use DRI3.</li>
+</ul>
+
+<pre><code>/etc/X11/xorg.conf.d/10-intel.conf:
+Section &quot;Device&quot;
+    Identifier &quot;Intel Graphics&quot;
+    Driver &quot;intel&quot;
+    Option &quot;DRI&quot; &quot;3&quot;
+EndSection
+
+/etc/X11/xorg.conf.d/20-radeon.conf:
+Section &quot;Device&quot;
+    Identifier &quot;Radeon&quot;
+    Driver &quot;radeon&quot;
+    Option &quot;DRI3&quot; &quot;1&quot;
+EndSection
+</code></pre>
+
+<ul>
+<li>DRI_PRIME=1 to use dGPU on host:</li>
+</ul>
+
+<pre><code>DRI_PRIME=1 glxinfo | grep OpenGL
+</code></pre>
+
+<ul>
+<li>To use in VM dGPU unbind from Radeon and bind to VFIO:</li>
+</ul>
+
+<pre><code>echo &quot;1002 6719&quot; &gt; /sys/bus/pci/drivers/vfio-pci/new_id
+echo &quot;0000:01:00.0&quot; &gt; /sys/bus/pci/devices/0000:01:00.0/driver/unbind
+echo &quot;0000:01:00.0&quot; &gt; /sys/bus/pci/drivers/vfio-pci/bind
+echo &quot;1002 6719&quot; &gt; /sys/bus/pci/drivers/vfio-pci/remove_id
+
+echo &quot;1002 aa80&quot; &gt; /sys/bus/pci/drivers/vfio-pci/new_id
+echo &quot;0000:01:00.1&quot; &gt; /sys/bus/pci/devices/0000:01:00.1/driver/unbind
+echo &quot;0000:01:00.1&quot; &gt; /sys/bus/pci/drivers/vfio-pci/bind
+echo &quot;1002 aa80&quot; &gt; /sys/bus/pci/drivers/vfio-pci/remove_id
+</code></pre>
+
+<ul>
+<li>After VM shutdown dGPU pass it back to Radeon.
+Most reliable way I found is device removal and PCI rescan:</li>
+</ul>
+
+<pre><code>echo 1 &gt; /sys/bus/pci/devices/0000:01:00.0/remove
+echo 1 &gt; /sys/bus/pci/devices/0000:01:00.1/remove
+echo 1 &gt; /sys/bus/pci/rescan
+</code></pre>
+
+<p>So far I did several VM restarts switching GPU between host and VM and it&rsquo;s looks solid. I didn&rsquo;t tested everything, but Unigine Valley on both Windows VM and Linux as well as few games work stable. Hope others will be able to reproduce it with different hardware.</p>
+
+<p>If you interested to see what hardware I use as well as QEMU configuration <a href="https://gist.github.com/ArseniyShestakov/dc152d080c65ebaa6781">you can find it on gist</a>. Since I just finish major upgrade VM still using BIOS, but, but once everything settle down I&rsquo;ll switch to use EFI/OVMF. For general information about GPU passthrough you can check <a href="http://vfio.blogspot.com/">Alex Williamson blog</a> and <a href="https://www.redhat.com/mailman/listinfo/vfio-users">vfio-users mailing list</a>.</p>
 
             </div>
 
@@ -110,16 +184,30 @@
                 <ul class="list-inline post-tags">
                     
                     <li>
-                        <a href="http://arseniyshestakov.com/tags/hugo">
+                        <a href="http://arseniyshestakov.com/tags/vfio">
                             <i class="fa fa-tags"></i>
-                            hugo
+                            vfio
                         </a>
                     </li>
                     
                     <li>
-                        <a href="http://arseniyshestakov.com/tags/blog">
+                        <a href="http://arseniyshestakov.com/tags/prime">
                             <i class="fa fa-tags"></i>
-                            blog
+                            prime
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://arseniyshestakov.com/tags/intel">
+                            <i class="fa fa-tags"></i>
+                            intel
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://arseniyshestakov.com/tags/radeon">
+                            <i class="fa fa-tags"></i>
+                            radeon
                         </a>
                     </li>
                     
@@ -133,13 +221,13 @@
                     <ul class="pager">
 
                         
-                        <li class="previous"><a href="http://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/"><span aria-hidden="true">&larr;</span> Older</a></li>
+                        <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
                         
 
                         <li><a href="http://arseniyshestakov.com/post">All Posts</a></li>
 
                         
-                        <li class="next"><a href="http://arseniyshestakov.com/about/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                        <li class="next"><a href="http://arseniyshestakov.com/2015/12/23/experimental-static-website/">Newer <span aria-hidden="true">&rarr;</span></a></li>
                         
 
                     </ul>

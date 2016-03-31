@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://arseniyshestakov.com/</loc>
-    <lastmod>2015-12-23T00:00:00+00:00</lastmod>
+    <lastmod>2016-03-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/</loc>
+    <lastmod>2016-03-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
