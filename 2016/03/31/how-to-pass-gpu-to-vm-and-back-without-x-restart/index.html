@@ -113,14 +113,14 @@
 
 <h2 id="long-story:78fead626a340942cdf0c7bfb7c93cd1">Long story:</h2>
 
-<p>I&rsquo;m was using GPU passthrough with VFIO for two years now and happy with it. Still for me as Linux nerd that like to play around with FOSS drivers there was huge downside that once GPU used in VM it&rsquo;s was impossible to use it on host before reboot.</p>
+<p>I&rsquo;ve been using a GPU passthrough with VFIO for two years now and I&rsquo;m happy with it. Still, for me as a Linux nerd that likes to play around with FOSS drivers there was the huge downside that once the GPU was used in the VM it was impossible to use it on the host again without rebooting.</p>
 
-<p>One year ago I did several attempts to make it work on Ubuntu 14.04 with 3.19 kernel, but failed. Radeon kernel module load and unload didn&rsquo;t end up well after few retries leaving me with locked host. I tested many different ideas, but none work and best I could achieve is getting GPU work after X server restart. Other VFIO users reported the same.</p>
+<p>One year ago I made several attempts at making this work on Ubuntu 14.04 with the 3.19 kernel, but failed. Loading and unloading the Radeon kernel module a few times would leave me with a locked host. I tested many different ideas, but none worked and the best I could achieve was getting the GPU to work after an X server restart, other VFIO users reported similar results.</p>
 
-<p>Now I&rsquo;m finally switch to Kubuntu 16.04 and after few days managed to get it working with stock everything and <a href="https://gist.github.com/cspicer/5e09d9ef382aa816435c">ACS kernel patch</a>. It&rsquo;s hard to say what exactly make it work, but suppose it&rsquo;s DRI3. My current setup looks that way:</p>
+<p>Now I&rsquo;ve finally switched to Kubuntu 16.04 and after a few days I managed to get it working with stock everything and the <a href="https://gist.github.com/cspicer/5e09d9ef382aa816435c">ACS kernel patch</a>. It&rsquo;s hard to say what exactly made it work, but I suppose it is DRI3. My current setup looks like this:</p>
 
 <ul>
-<li>Host boot with UEFI. Used Legacy BOIS / CSM before.</li>
+<li>Host boot with UEFI. Used Legacy BIOS / CSM before.</li>
 <li>Host monitors connected to iGPU. One connected to dGPU as well for usage in VM.</li>
 <li>GPUs attached to radeon and intel kernel drivers. No blacklisting.</li>
 <li>Radeon and Intel DDX drivers is set use DRI3.</li>
@@ -173,9 +173,11 @@ echo 1 &gt; /sys/bus/pci/devices/0000:01:00.1/remove
 echo 1 &gt; /sys/bus/pci/rescan
 </code></pre>
 
-<p>So far I did several VM restarts switching GPU between host and VM and it&rsquo;s looks solid. I didn&rsquo;t tested everything, but Unigine Valley on both Windows VM and Linux as well as few games work stable. Hope others will be able to reproduce it with different hardware.</p>
+<p>So far I&rsquo;ve restarted the VM several times, switching the GPU between host and VM and it looks solid. I haven&rsquo;t tested everything, but Unigine Valley on both Windows VM and Linux as well as a few games are stable. I hope others will be able to reproduce it with different hardware.</p>
 
-<p>If you interested to see what hardware I use as well as QEMU configuration <a href="https://gist.github.com/ArseniyShestakov/dc152d080c65ebaa6781">you can find it on gist</a>. Since I just finish major upgrade VM still using BIOS, but, but once everything settle down I&rsquo;ll switch to use EFI/OVMF. For general information about GPU passthrough you can check <a href="http://vfio.blogspot.com/">Alex Williamson blog</a> and <a href="https://www.redhat.com/mailman/listinfo/vfio-users">vfio-users mailing list</a>.</p>
+<p>If you&rsquo;re interested in seeing what hardware I use as well as my QEMU configuration you can find it on <a href="https://gist.github.com/ArseniyShestakov/dc152d080c65ebaa6781">you can find it on gist</a>. Since I just finished a major upgrade the VM is still using BIOS, but once everything settles down I&rsquo;ll switch to using EFI/OVMF. For general information about GPU passthroughs you can check <a href="http://vfio.blogspot.com/">Alex Williamson blog</a> and the <a href="https://www.redhat.com/mailman/listinfo/vfio-users">vfio-users mailing list</a>.</p>
+
+<p>UPD1: Text patch by TGiFallen applied.</p>
 
             </div>
 
