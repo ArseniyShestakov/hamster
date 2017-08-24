@@ -1,17 +1,33 @@
-BaseUrl: "http://arseniyshestakov.com"
+BaseUrl: "https://arseniyshestakov.com"
 LanguageCode: "en-us"
 Title: "Personal website"
-Theme: "beg"
+Theme: "ghostwriter"
+Copyright: "Arseniy Shestakov"
+googleAnalytics: "UA-71686871-1"
+disqusShortname: "arseniyshestakov"
+
+Author:
+  name: "Arseniy Shestakov"
 
 Params:
-  Author: "Arseniy Shestakov"
-  DateForm: "02 January 2006"
-  GoogleAnalyticsUserID: "UA-71686871-1"
-  Twitter: "arsenyshestakov"
-  Github: "arseniyshestakov"
-  ShowRelatedPost: False
-  Disqus: "arseniyshestakov"
-  SyntaxHighlightTheme: "github.min.css"
+  intro: true
+  headline: "Arseniy Shestakov"
+  description: "I am a open source developer, free software supporter and Linux enthusiast."
+#  gplus: "https://google.com/+XXX"
+  github: "https://github.com/ArseniyShestakov"
+#  gitlab: "https://gitlab.com/ArseniyShestakov"
+  linkedin: "https://linkedin.com/in/arseniyshestakov/"
+  twitter: "https://twitter.com/arsenyshestakov"
+#  stackoverflow: "https://stackoverflow.com/users/4207535/arseniy-shestakov"
+  email: "me@arseniyshestakov.com"
+  opengraph: true
+  shareTwitter: true
+  shareFacebook: true
+  shareGooglePlus: true
+  shareLinkedIn: true
+  dateFormat: "Mon, Jan 2, 2006"
+  highlightJsUrl: ""
+  highlightJsLocalUrl: ""
 
 Indexes:
   tag: "tags"
