@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Personal website </title>
-    <link>http://arseniyshestakov.com/tags/vfio/</link>
+    <title>Vfio on Personal website</title>
+    <link>https://arseniyshestakov.com/tags/vfio/index.xml</link>
+    <description>Recent content in Vfio on Personal website</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author>Arseniy Shestakov</author>
-    <rights>(C) 2016</rights>
-    <updated>2016-03-31 00:00:00 &#43;0000 UTC</updated>
-
+    <copyright>Arseniy Shestakov</copyright>
+    <atom:link href="https://arseniyshestakov.com/tags/vfio/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>How To: pass GPU to VM and back without X restart</title>
+      <link>https://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/</link>
+      <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
       
-        <item>
-          <title>How To: pass GPU to VM and back without X restart</title>
-          <link>http://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/</link>
-          <pubDate>Thu, 31 Mar 2016 00:00:00 UTC</pubDate>
-          <author>Arseniy Shestakov</author>
-          <guid>http://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/</guid>
-          <description>
-
-&lt;p&gt;TLDR: If you use FOSS drivers with DRI3 you now can do this:&lt;/p&gt;
+      <guid>https://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/</guid>
+      <description>&lt;p&gt;TLDR: If you use FOSS drivers with DRI3 you now can do this:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Use GPU on Linux for any 3D applications.&lt;/li&gt;
@@ -26,9 +23,10 @@
 &lt;li&gt;Once VM is shutdown use GPU on host again.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Everything without reboot and X server restart.&lt;/p&gt;
+&lt;p&gt;Everything without reboot and X server restart.
+&lt;/p&gt;
 
-&lt;h2 id=&#34;long-story:78fead626a340942cdf0c7bfb7c93cd1&#34;&gt;Long story:&lt;/h2&gt;
+&lt;h2 id=&#34;long-story&#34;&gt;Long story:&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve been using a GPU passthrough with VFIO for two years now and I&amp;rsquo;m happy with it. Still, for me as a Linux nerd that likes to play around with FOSS drivers there was the huge downside that once the GPU was used in the VM it was impossible to use it on the host again without rebooting.&lt;/p&gt;
 
@@ -94,11 +92,8 @@ echo 1 &amp;gt; /sys/bus/pci/rescan
 
 &lt;p&gt;If you&amp;rsquo;re interested in seeing what hardware I use as well as my QEMU configuration you can find it on &lt;a href=&#34;https://gist.github.com/ArseniyShestakov/dc152d080c65ebaa6781&#34;&gt;you can find it on gist&lt;/a&gt;. Since I just finished a major upgrade the VM is still using BIOS, but once everything settles down I&amp;rsquo;ll switch to using EFI/OVMF. For general information about GPU passthroughs you can check &lt;a href=&#34;http://vfio.blogspot.com/&#34;&gt;Alex Williamson blog&lt;/a&gt; and the &lt;a href=&#34;https://www.redhat.com/mailman/listinfo/vfio-users&#34;&gt;vfio-users mailing list&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;UPD1: Text patch by TGiFallen applied.&lt;/p&gt;
-</description>
-        </item>
-      
+&lt;p&gt;UPD1: Text patch by TGiFallen applied.&lt;/p&gt;</description>
+    </item>
     
-
   </channel>
 </rss>
