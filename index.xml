@@ -2,13 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal website</title>
-    <link>https://arseniyshestakov.com/index.xml</link>
+    <link>https://arseniyshestakov.com/</link>
     <description>Recent content on Personal website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Arseniy Shestakov</copyright>
     <lastBuildDate>Thu, 31 Mar 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://arseniyshestakov.com/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://arseniyshestakov.com/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>How To: pass GPU to VM and back without X restart</title>
@@ -25,75 +27,7 @@
 &lt;/ul&gt;
 
 &lt;p&gt;Everything without reboot and X server restart.
-&lt;/p&gt;
-
-&lt;h2 id=&#34;long-story&#34;&gt;Long story:&lt;/h2&gt;
-
-&lt;p&gt;I&amp;rsquo;ve been using a GPU passthrough with VFIO for two years now and I&amp;rsquo;m happy with it. Still, for me as a Linux nerd that likes to play around with FOSS drivers there was the huge downside that once the GPU was used in the VM it was impossible to use it on the host again without rebooting.&lt;/p&gt;
-
-&lt;p&gt;One year ago I made several attempts at making this work on Ubuntu 14.04 with the 3.19 kernel, but failed. Loading and unloading the Radeon kernel module a few times would leave me with a locked host. I tested many different ideas, but none worked and the best I could achieve was getting the GPU to work after an X server restart, other VFIO users reported similar results.&lt;/p&gt;
-
-&lt;p&gt;Now I&amp;rsquo;ve finally switched to Kubuntu 16.04 and after a few days I managed to get it working with stock everything and the &lt;a href=&#34;https://gist.github.com/cspicer/5e09d9ef382aa816435c&#34;&gt;ACS kernel patch&lt;/a&gt;. It&amp;rsquo;s hard to say what exactly made it work, but I suppose it is DRI3. My current setup looks like this:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Host boot with UEFI. Used Legacy BIOS / CSM before.&lt;/li&gt;
-&lt;li&gt;Host monitors connected to iGPU. One connected to dGPU as well for usage in VM.&lt;/li&gt;
-&lt;li&gt;GPUs attached to radeon and intel kernel drivers. No blacklisting.&lt;/li&gt;
-&lt;li&gt;Radeon and Intel DDX drivers is set use DRI3.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;/etc/X11/xorg.conf.d/10-intel.conf:
-Section &amp;quot;Device&amp;quot;
-    Identifier &amp;quot;Intel Graphics&amp;quot;
-    Driver &amp;quot;intel&amp;quot;
-    Option &amp;quot;DRI&amp;quot; &amp;quot;3&amp;quot;
-EndSection
-
-/etc/X11/xorg.conf.d/20-radeon.conf:
-Section &amp;quot;Device&amp;quot;
-    Identifier &amp;quot;Radeon&amp;quot;
-    Driver &amp;quot;radeon&amp;quot;
-    Option &amp;quot;DRI3&amp;quot; &amp;quot;1&amp;quot;
-EndSection
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;DRI_PRIME=1 to use dGPU on host:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;DRI_PRIME=1 glxinfo | grep OpenGL
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;To use in VM dGPU unbind from Radeon and bind to VFIO:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;1002 6719&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/new_id
-echo &amp;quot;0000:01:00.0&amp;quot; &amp;gt; /sys/bus/pci/devices/0000:01:00.0/driver/unbind
-echo &amp;quot;0000:01:00.0&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/bind
-echo &amp;quot;1002 6719&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/remove_id
-
-echo &amp;quot;1002 aa80&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/new_id
-echo &amp;quot;0000:01:00.1&amp;quot; &amp;gt; /sys/bus/pci/devices/0000:01:00.1/driver/unbind
-echo &amp;quot;0000:01:00.1&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/bind
-echo &amp;quot;1002 aa80&amp;quot; &amp;gt; /sys/bus/pci/drivers/vfio-pci/remove_id
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;After VM shutdown dGPU pass it back to Radeon.
-Most reliable way I found is device removal and PCI rescan:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;echo 1 &amp;gt; /sys/bus/pci/devices/0000:01:00.0/remove
-echo 1 &amp;gt; /sys/bus/pci/devices/0000:01:00.1/remove
-echo 1 &amp;gt; /sys/bus/pci/rescan
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So far I&amp;rsquo;ve restarted the VM several times, switching the GPU between host and VM and it looks solid. I haven&amp;rsquo;t tested everything, but Unigine Valley on both Windows VM and Linux as well as a few games are stable. I hope others will be able to reproduce it with different hardware.&lt;/p&gt;
-
-&lt;p&gt;If you&amp;rsquo;re interested in seeing what hardware I use as well as my QEMU configuration you can find it on &lt;a href=&#34;https://gist.github.com/ArseniyShestakov/dc152d080c65ebaa6781&#34;&gt;you can find it on gist&lt;/a&gt;. Since I just finished a major upgrade the VM is still using BIOS, but once everything settles down I&amp;rsquo;ll switch to using EFI/OVMF. For general information about GPU passthroughs you can check &lt;a href=&#34;http://vfio.blogspot.com/&#34;&gt;Alex Williamson blog&lt;/a&gt; and the &lt;a href=&#34;https://www.redhat.com/mailman/listinfo/vfio-users&#34;&gt;vfio-users mailing list&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;UPD1: Text patch by TGiFallen applied.&lt;/p&gt;</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -102,10 +36,8 @@ echo 1 &amp;gt; /sys/bus/pci/rescan
       <pubDate>Wed, 23 Dec 2015 00:00:00 +0000</pubDate>
       
       <guid>https://arseniyshestakov.com/2015/12/23/experimental-static-website/</guid>
-      <description>&lt;p&gt;This is my first attempt to create personal website using &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m used wordpress for almost ten years and made many projects with it, but for personal website that will be rarely updated it&amp;rsquo;s feels like overkill and ability to host it on GitHub Pages is nice advantage too.&lt;/p&gt;
-</description>
+      <description>This is my first attempt to create personal website using Hugo.
+I&amp;rsquo;m used wordpress for almost ten years and made many projects with it, but for personal website that will be rarely updated it&amp;rsquo;s feels like overkill and ability to host it on GitHub Pages is nice advantage too.</description>
     </item>
     
     <item>
@@ -114,14 +46,8 @@ echo 1 &amp;gt; /sys/bus/pci/rescan
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://arseniyshestakov.com/about/</guid>
-      <description>&lt;p&gt;My name is Arseniy and I&amp;rsquo;m open source enthusiast and C++ developer. I using Linux for over 10 years and have background in web development, Linux system administration and all kind of automation using Bash, Python and Go.&lt;/p&gt;
-
-&lt;p&gt;While I enjoy all kind of music, books and TV shows main hobby of my life is PC gaming. Started playing on PC since 1996 and I still huge fan of classical games of many genres from Black Isle, BioWare, Bullfrog, NWC, etc. Some of my favorite games are Fallout 1 / 2, Heroes of Might and Magic 2 / 3, Jagged Alliance 2, Populous, Dungeon Keeper, Age of Empires, Seven Kingdoms, Total Annihilation and there are many more.&lt;/p&gt;
-
-&lt;p&gt;I also enjoy modern games starting from everything Obsidian Entertainment produced or the Witcher series. While I was never big fan of MMO or FPS games I still spent many months in PlanetSide 2 and it&amp;rsquo;s another game that will always hold special place in my heart.&lt;/p&gt;
-
-&lt;p&gt;Back in 2013-2015 I actively participated development of game called Planetary Annihilation providing testing and technical support as volunteer. It&amp;rsquo;s was enjoyable experience so I decide that I want to become game developer myself and since then I slowly moving towards this goal.&lt;/p&gt;
-</description>
+      <description>My name is Arseniy and I&amp;rsquo;m open source enthusiast and C++ developer. I using Linux for over 10 years and have background in web development, Linux system administration and all kind of automation using Bash, Python and Go.
+While I enjoy all kind of music, books and TV shows main hobby of my life is PC gaming. Started playing on PC since 1996 and I still huge fan of classical games of many genres from Black Isle, BioWare, Bullfrog, NWC, etc.</description>
     </item>
     
     <item>
@@ -130,22 +56,9 @@ echo 1 &amp;gt; /sys/bus/pci/rescan
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://arseniyshestakov.com/contact/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m always happy to talk about any projects I participate or continue discussions started elsewhere. Please do not hesitate to contact me if you have any questions:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;WhatsApp, Telegram and other messengers: &lt;strong&gt;+44 73 93 026 466&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Email: me (at) thisdomain&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You can see me on:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/user?id=SXX&#34;&gt;Hacker News&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/user/SxxxX/&#34;&gt;Reddit&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://steamcommunity.com/id/-sxx-&#34;&gt;Steam&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://forums.uberent.com/members/sxx.1896020/&#34;&gt;Uber Forums&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>I&amp;rsquo;m always happy to talk about any projects I participate or continue discussions started elsewhere. Please do not hesitate to contact me if you have any questions:
+ WhatsApp, Telegram and other messengers: +44 73 93 026 466 Email: me (at) thisdomain  You can see me on:
+ Hacker News Reddit Steam Uber Forums  </description>
     </item>
     
     <item>
@@ -154,12 +67,8 @@ echo 1 &amp;gt; /sys/bus/pci/rescan
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://arseniyshestakov.com/vcmi/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m currently working on &lt;a href=&#34;https://github.com/vcmi/vcmi&#34;&gt;VCMI&lt;/a&gt; engine. It&amp;rsquo;s work in progress open source implementation of Heroes of Might and Magic 3 from 1999. This is one of favorite games of my childhood and I decide to work on it since I was always liked open source projects such as &lt;a href=&#34;https://openmw.org/&#34;&gt;OpenMW&lt;/a&gt; and &lt;a href=&#34;https://www.openttd.org/&#34;&gt;OpenTTD&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Over years I worked on almost all parts of the engine and learned a lot of things about cross platform development, bug testing, continuous integration, packaging and shipping builds for multiple operation systems. I also maintain project infrastructure and helping to keep some presence in social networks so more people know about the project once it&amp;rsquo;s fully playable.&lt;/p&gt;
-
-&lt;p&gt;Experience of working in team of people who love what they doing is priceless. I&amp;rsquo;m really thankful for everyone who participated the project with me, gave feedback on my code or just criticized it. Thanks everyone!&lt;/p&gt;
-</description>
+      <description>I&amp;rsquo;m currently working on VCMI engine. It&amp;rsquo;s work in progress open source implementation of Heroes of Might and Magic 3 from 1999. This is one of favorite games of my childhood and I decide to work on it since I was always liked open source projects such as OpenMW and OpenTTD.
+Over years I worked on almost all parts of the engine and learned a lot of things about cross platform development, bug testing, continuous integration, packaging and shipping builds for multiple operation systems.</description>
     </item>
     
   </channel>

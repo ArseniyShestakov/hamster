@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Personal website</title>
+    <link>https://arseniyshestakov.com/tags/</link>
+    <description>Recent content in Tags on Personal website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Arseniy Shestakov</copyright>
+    <lastBuildDate>Wed, 23 Dec 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://arseniyshestakov.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog</title>
+      <link>https://arseniyshestakov.com/tags/blog/</link>
+      <pubDate>Wed, 23 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://arseniyshestakov.com/tags/hugo/</link>
+      <pubDate>Wed, 23 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Intel</title>
+      <link>https://arseniyshestakov.com/tags/intel/</link>
+      <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/intel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Prime</title>
+      <link>https://arseniyshestakov.com/tags/prime/</link>
+      <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/prime/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Radeon</title>
+      <link>https://arseniyshestakov.com/tags/radeon/</link>
+      <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/radeon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vfio</title>
+      <link>https://arseniyshestakov.com/tags/vfio/</link>
+      <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/vfio/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
