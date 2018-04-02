@@ -10,9 +10,9 @@ I am a software engineer who has varying experience across many different areas.
 * **C++:** I still consider myself to be a junior developer, I'm always learning. Some of the libraries and tools I've used are:
 
   * Boost, SDL2, googletest.
-  * Qt, Qt Creator, GDB. For development of desktop applications.
-  * Profilers and debugging with Valgrind, Intel Parallel Studio.
-  * Static code analyzers: Clang, Cppcheck, and Coverity, etc.
+  * Development of desktop applications: Qt, Qt Creator, GDB.
+  * Profiling and debugging: Valgrind, Intel Parallel Studio.
+  * Static code analysis: Clang, Cppcheck, and Coverity, etc.
 
 * **Cross-platform development:** I maintain CMake-based build and packaging system as well as continious integration for cross-platform game. I keep finger on the pulse of other platforms and able to work efficiently on Windows and macOS. I can do basic debugging and bug fixing in both Visual Studio and Xcode.
 * **PHP:** My experience as freelancer lay in maintaning of small and middle sized web projects that use following software:
