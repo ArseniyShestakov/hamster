@@ -76,6 +76,7 @@ a { color: #f03838; text-decoration: none; }
 ul, ol { line-height: 1.4; margin: 0 0 20px; }
 ul ul, ul ol, ol ul, ol ol { margin: 10px 0 0 20px; }
 ul li, ol li { margin: 0 0 2px; }
+ul li p, ol li p { margin: 0; }
 ul li:last-of-type, ol li:last-of-type { margin-bottom: 0; }
 blockquote { border-left: 1px dotted #f03838; margin: 40px 0; padding: 5px 30px; }
 blockquote p { color: #aeadad; display: block; font-style: italic; margin: 0; width: 100%; }
