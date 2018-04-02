@@ -21,9 +21,7 @@ install:
   - git checkout -qf $TRAVIS_COMMIT
 # Workaround used to make sure hugo install won't fail
 # https://discourse.gohugo.io/t/govendor-fails-during-build-from-source/8084
-  - go get -u -v github.com/kardianos/govendor
-  - go get -u -v github.com/gohugoio/hugo
-  - (cd $GOPATH/src/github.com/gohugoio/hugo && govendor sync && go install)
+  - go get -v github.com/gohugoio/hugo
 
 script:
   - cd $HOME && cd $TRAVIS_REPO_SLUG
