@@ -12,11 +12,10 @@ Pass it into VM and do anything with it.
 Once VM is shutdown use GPU on host again.
 
 
-Everything without reboot and X server restart.
-">
+Everything without reboot and X server restart.">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.39-DEV" />
+        <meta name="generator" content="Hugo 0.53-DEV" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="How To: pass GPU to VM and back without X restart">
@@ -28,8 +27,7 @@ Pass it into VM and do anything with it.
 Once VM is shutdown use GPU on host again.
 
 
-Everything without reboot and X server restart.
-">
+Everything without reboot and X server restart.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/">
         <link rel="stylesheet" href="https://arseniyshestakov.com/dist/styles.css">
@@ -40,14 +38,17 @@ Everything without reboot and X server restart.
     </head>
     <body>
         
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-71686871-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-71686871-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 
@@ -138,8 +139,7 @@ ga('send', 'pageview');
 <li>Once VM is shutdown use GPU on host again.</li>
 </ul>
 
-<p>Everything without reboot and X server restart.
-</p>
+<p>Everything without reboot and X server restart.</p>
 
 <h2 id="long-story">Long story:</h2>
 
@@ -153,34 +153,30 @@ ga('send', 'pageview');
 <li>Host boot with UEFI. Used Legacy BIOS / CSM before.</li>
 <li>Host monitors connected to iGPU. One connected to dGPU as well for usage in VM.</li>
 <li>GPUs attached to radeon and intel kernel drivers. No blacklisting.</li>
-<li>Radeon and Intel DDX drivers is set use DRI3.</li>
-</ul>
+
+<li><p>Radeon and Intel DDX drivers is set use DRI3.</p>
 
 <pre><code>/etc/X11/xorg.conf.d/10-intel.conf:
 Section &quot;Device&quot;
-    Identifier &quot;Intel Graphics&quot;
-    Driver &quot;intel&quot;
-    Option &quot;DRI&quot; &quot;3&quot;
+Identifier &quot;Intel Graphics&quot;
+Driver &quot;intel&quot;
+Option &quot;DRI&quot; &quot;3&quot;
 EndSection
 
 /etc/X11/xorg.conf.d/20-radeon.conf:
 Section &quot;Device&quot;
-    Identifier &quot;Radeon&quot;
-    Driver &quot;radeon&quot;
-    Option &quot;DRI3&quot; &quot;1&quot;
+Identifier &quot;Radeon&quot;
+Driver &quot;radeon&quot;
+Option &quot;DRI3&quot; &quot;1&quot;
 EndSection
-</code></pre>
+</code></pre></li>
 
-<ul>
-<li>DRI_PRIME=1 to use dGPU on host:</li>
-</ul>
+<li><p>DRI_PRIME=1 to use dGPU on host:</p>
 
 <pre><code>DRI_PRIME=1 glxinfo | grep OpenGL
-</code></pre>
+</code></pre></li>
 
-<ul>
-<li>To use in VM dGPU unbind from Radeon and bind to VFIO:</li>
-</ul>
+<li><p>To use in VM dGPU unbind from Radeon and bind to VFIO:</p>
 
 <pre><code>echo &quot;1002 6719&quot; &gt; /sys/bus/pci/drivers/vfio-pci/new_id
 echo &quot;0000:01:00.0&quot; &gt; /sys/bus/pci/devices/0000:01:00.0/driver/unbind
@@ -191,17 +187,16 @@ echo &quot;1002 aa80&quot; &gt; /sys/bus/pci/drivers/vfio-pci/new_id
 echo &quot;0000:01:00.1&quot; &gt; /sys/bus/pci/devices/0000:01:00.1/driver/unbind
 echo &quot;0000:01:00.1&quot; &gt; /sys/bus/pci/drivers/vfio-pci/bind
 echo &quot;1002 aa80&quot; &gt; /sys/bus/pci/drivers/vfio-pci/remove_id
-</code></pre>
+</code></pre></li>
 
-<ul>
-<li>After VM shutdown dGPU pass it back to Radeon.
-Most reliable way I found is device removal and PCI rescan:</li>
-</ul>
+<li><p>After VM shutdown dGPU pass it back to Radeon.
+Most reliable way I found is device removal and PCI rescan:</p>
 
 <pre><code>echo 1 &gt; /sys/bus/pci/devices/0000:01:00.0/remove
 echo 1 &gt; /sys/bus/pci/devices/0000:01:00.1/remove
 echo 1 &gt; /sys/bus/pci/rescan
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>So far I&rsquo;ve restarted the VM several times, switching the GPU between host and VM and it looks solid. I haven&rsquo;t tested everything, but Unigine Valley on both Windows VM and Linux as well as a few games are stable. I hope others will be able to reproduce it with different hardware.</p>
 
@@ -264,7 +259,7 @@ echo 1 &gt; /sys/bus/pci/rescan
         
     <div class="comments">
         <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     

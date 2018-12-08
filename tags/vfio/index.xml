@@ -26,8 +26,7 @@
 &lt;li&gt;Once VM is shutdown use GPU on host again.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Everything without reboot and X server restart.
-&lt;/p&gt;</description>
+&lt;p&gt;Everything without reboot and X server restart.&lt;/p&gt;</description>
     </item>
     
   </channel>
