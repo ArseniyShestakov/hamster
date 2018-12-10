@@ -12,5 +12,5 @@ You can see me on:
 
 * [Hacker News](https://news.ycombinator.com/user?id=SXX)
 * [Reddit](https://www.reddit.com/user/SxxxX/)
-* [Steam](http://steamcommunity.com/id/-sxx-)
+* [Steam](https://steamcommunity.com/id/arseniyshestakov/)
 * [Uber Forums](https://forums.uberent.com/members/sxx.1896020/)
