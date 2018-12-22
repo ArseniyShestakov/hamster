@@ -3,14 +3,8 @@ title = "Contacts"
 menu = "main"
 +++
 
-I'm always happy to talk about any projects I participate or continue discussions started elsewhere. Please do not hesitate to contact me if you have any questions:
+I'm always open to discussion about any projects I participated and happy to make new friends. If you want to continue discussions started elsewhere or just want to ask something please do not hesitate to contact me via:
 
-* WhatsApp, Telegram and other messengers: **+44 73 93 026 466**
 * Email: me (at) thisdomain
-
-You can see me on:
-
-* [Hacker News](https://news.ycombinator.com/user?id=SXX)
-* [Reddit](https://www.reddit.com/user/SxxxX/)
-* [Steam](https://steamcommunity.com/id/arseniyshestakov/)
-* [Uber Forums](https://forums.uberent.com/members/sxx.1896020/)
+* WhatsApp, Telegram, Viber and other messengers: **use phone number in header** or **@arseniyshestakov**
+* Social network URLs are in footer below
