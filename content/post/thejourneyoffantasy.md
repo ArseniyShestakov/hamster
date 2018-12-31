@@ -16,7 +16,7 @@ comments = true
 
 Two years ago, after only ever touching technical literature for many years, I got back to books since their audio format looked like a right way to improve vocabulary. Additionally I wanted to explore modern fantasy as It's was favorite genre of my childhood while I only barely touched it since.
 
-Anyhow I end up listening books almost non-stop especially for the last year and half. Thanks to friends who provided me with recommendations today my reading list is more varied, but I managed to finish plenty of fantasy series. I was never particularly skilled at reviewing specific books and listening with extremely fast pace doesn't help with it either, but I feel it's time to draw some conclusions. **Since it's really not really reviews I've managed to only leave few very minor spoilers in this post so everyone can read safely!**
+Anyhow I end up listening books almost non-stop especially for the last year and half. Thanks to friends who provided me with recommendations today my reading list is more varied, but I managed to finish plenty of fantasy series. I was never particularly skilled at reviewing specific books and listening with extremely fast pace doesn't help with it either, but I feel it's time to draw some conclusions. **Since it's not really reviews I've managed to only leave few very minor spoilers in this post so everyone can read safely!**
 
 <!--more-->
 
@@ -26,7 +26,7 @@ So here is list of series that I read. Favorites are in bold:
 
 * [The Wither]({{< relref "#the-witcher" >}}) by Andrzej Sapkowski
 * [**A Song of Ice and Fire**]({{< relref "#a-song-of-ice-and-fire" >}}) by George R.R. Martin
-* [Wheel of Time by Robert Jordan
+* [The Wheel of Time]({{< relref "#the-wheel-of-time" >}}) by Robert Jordan
 * [Discworld]({{< relref "#discworld" >}}) by Terry Pratchett
 * [Mistborn]({{< relref "#mistborn" >}}) by Brandon Sanderson
 * [All of Cosmere]({{< relref "#all-of-cosmere" >}})
@@ -47,15 +47,15 @@ Even today first two short stories books are one of my favorite books. Everythin
 
 Remaining five that make Witcher Saga is mixed experience with it's ups and downs. Not everyone will like these books. Nonetheless games and book series together make best fantasy series adaption in form of computer game. CD Project Red put huge amount of work and love into Witcher 3 and for reader of book series turn game into it's extremely rewarding experience. There are thousands accurately interwoven references and small details so it's almost unbelievable.
 
-I'm playing games all my life and finished these books plenty of times so it's really hard to make me. I only fall in love with games or books few times in decade. Yet It's was really emotional and breathtaking journey so on completion I had no other choice than to read more books since no game was there to fill the void.
+I'm playing games all my life and finished these books plenty of times so it's indeed hard to surprise me. I only fall in love with games or books few times in decade. Yet It's was really emotional and breathtaking journey so on completion I had no other choice than to read more books since no game was there to fill the void.
 
 A Song of Ice and Fire:
 ------------------
 After The Witcher I read Albert Camus books and then went for third re-read of Martin books during summer of 2017. I was listening it with slow pace and picking some small things that I didn't get from previous reads or digging on wiki.
 
-I'm not going to stop here to write fully featured review of the series since this time I was mostly intrigued by number and complexity of plot lines that will need to be resolved in that future book. While it's definitely one of my favorite series it's made me into guy who is mostly against reading of unfinished series. So I really want to read Patrick Rothfuss books, but seems like I wont do that anytime soon.
+I'm not going to stop here to write fully featured review of the series since this time I was mostly intrigued by number and complexity of plot lines that will need to be resolved in that future book. While it's definitely one of my favorite series it's made me into guy who is mostly against reading of unfinished series. So I honestly want to read Patrick Rothfuss books, but seems like I wont do that anytime soon.
 
-Wheel of Time:
+The Wheel of Time:
 ------------------
 Within a month before I started series it I successfully sold my year-old GPU for about twice of it's original price, thanks to yet another cryptocurrency bubble. Taking a sabbatical from PC gaming and PlanetSide 2 in particular looked like a good plan to boost my productivity. Unfortunately instead I started to listen the series in first half of September of 2017 and finished it within two months around my birthday on 28 October.
 
@@ -87,7 +87,7 @@ All of Cosmere:
 ------------------
 I don't see the point to write something about every book and short story since I checked everything related to Cosmere, but it's important to explain concept itself as it's essential to understand why many people like these books so much. I put this part before Stormlight Archive because of chronology of my listening.
 
-When Brandon Sanderson started his career he really wanted to write epic fantasy, but it's was very tough for young writer so he went different way. Instead of writing massive series with ten books thousand of pages each he starter to craft single universe where multiple series are interlinked. It's still possible to read his best books as standalone and appreciate them for what they are, but real worth of his work will only emerge if you dig little bit deeper.
+When Brandon Sanderson started his career he wanted to write epic fantasy series, but it's was very tough for young writer so he went different way. Instead of writing massive series with ten books thousand of pages each he starter to craft single universe where multiple series are interlinked. It's still possible to read his best books as standalone and appreciate them for what they are, but real worth of his work will only emerge if you dig little bit deeper.
 
 As I learnt more about Cosmere lore over time I also started to appreciate logical and predictable magic systems. I guess not everyone will like this straightforwardness, but it's very refreshing after classical fantasy where magic is deus ex machina. Stories still heavily rely on magic and all of the books are still high fantasy, but magic is feel akin to immutable law of physics instead some rabbit out of hat.
 
@@ -121,7 +121,7 @@ The Dark Tower:
 ------------------
 It's very hard to write anything about Dark Tower without spoilers because what this series do the best is mixing completely different genres and well known stories into single book. So to explain what is special about it I'll have to spoil it and I don't want to.
 
-Obviously it's much easier to read compared to usual epic fantasy so I finished it in September 2018. I didn't read as much of books from different genres as I wish to so I can be really biased here, but for me right now this is easily most unusual series I ever read and it's looks like Stephen King certainly have unique way to tell his stories.
+Obviously it's much easier to read compared to usual epic fantasy so I finished it in September 2018. My reading experience in terms of genres nowhere close to diverse so I'm undoubtedly biased here, but for me right now this was easily most unusual series I ever read and it's looks like Stephen King certainly have unique way to tell his stories.
 
 On first book I was quite confused, but then story pick up pace and it's getting better. Then each book is good separate adventure that slowly moves story to conclusion.
 
