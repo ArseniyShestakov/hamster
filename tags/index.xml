@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Arseniy Shestakov</copyright>
-    <lastBuildDate>Wed, 23 Dec 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 31 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://arseniyshestakov.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Asoiaf</title>
+      <link>https://arseniyshestakov.com/tags/asoiaf/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/asoiaf/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Blog</title>
@@ -18,6 +27,33 @@
       <pubDate>Wed, 23 Dec 2015 00:00:00 +0000</pubDate>
       
       <guid>https://arseniyshestakov.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Books</title>
+      <link>https://arseniyshestakov.com/tags/books/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/books/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cosmere</title>
+      <link>https://arseniyshestakov.com/tags/cosmere/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/cosmere/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fantasy</title>
+      <link>https://arseniyshestakov.com/tags/fantasy/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/fantasy/</guid>
       <description></description>
     </item>
     
@@ -36,6 +72,15 @@
       <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
       
       <guid>https://arseniyshestakov.com/tags/intel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Malazan</title>
+      <link>https://arseniyshestakov.com/tags/malazan/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/malazan/</guid>
       <description></description>
     </item>
     
@@ -63,6 +108,24 @@
       <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
       
       <guid>https://arseniyshestakov.com/tags/vfio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Witcher</title>
+      <link>https://arseniyshestakov.com/tags/witcher/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/witcher/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wot</title>
+      <link>https://arseniyshestakov.com/tags/wot/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://arseniyshestakov.com/tags/wot/</guid>
       <description></description>
     </item>
     
