@@ -45,6 +45,10 @@ Params:
   imdb: "https://www.imdb.com/user/ur65924630/"
   myanimelist: "https://myanimelist.net/profile/arseniyshestakov"
 
+taxonomies:
+  category: categories
+  tags: tags
+
 Indexes:
   tag: "tags"
 

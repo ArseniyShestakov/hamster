@@ -1,6 +1,7 @@
 +++
 title = "VCMI Project"
-menu = "main"
+categories = [ "Projects" ]
+description = "Maintainer, code review, DevOps, C++ with Qt"
 +++
 
 I'm currently working on [VCMI](https://github.com/vcmi/vcmi) engine. It's work in progress open source implementation of Heroes of Might and Magic 3 from 1999. This is one of favorite games of my childhood and I decide to work on it since I was always liked open source projects such as [OpenMW](https://openmw.org/) and [OpenTTD](https://www.openttd.org/).
