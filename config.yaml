@@ -13,6 +13,7 @@ Params:
   intro: true
   headline: "Arseniy Shestakov"
   description: "I am a open source developer, free software supporter and Linux enthusiast."
+  photo: "/photo.jpg"
 #  gplus: "https://google.com/+XXX"
   github: "https://github.com/ArseniyShestakov"
 #  gitlab: "https://gitlab.com/ArseniyShestakov"
