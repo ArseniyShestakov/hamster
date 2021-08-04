@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vfio on Personal website</title><link>https://arseniyshestakov.com/tags/vfio/</link><description>Recent content in vfio on Personal website</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>Arseniy Shestakov</copyright><lastBuildDate>Thu, 31 Mar 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://arseniyshestakov.com/tags/vfio/index.xml" rel="self" type="application/rss+xml"/><item><title>How To: pass GPU to VM and back without X restart</title><link>https://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/</link><pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate><guid>https://arseniyshestakov.com/2016/03/31/how-to-pass-gpu-to-vm-and-back-without-x-restart/</guid><description>&lt;p>TLDR: If you use FOSS drivers with DRI3 you now can do this:&lt;/p>
+&lt;ul>
+&lt;li>Use GPU on Linux for any 3D applications.&lt;/li>
+&lt;li>Pass it into VM and do anything with it.&lt;/li>
+&lt;li>Once VM is shutdown use GPU on host again.&lt;/li>
+&lt;/ul>
+&lt;p>Everything without reboot and X server restart.&lt;/p></description></item></channel></rss>

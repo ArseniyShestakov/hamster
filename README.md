@@ -1,1 +1,1 @@
-[Hugo](http://gohugo.io/) configuration for my website arseniyshestakov.com 
+Generated static files for arseniyshestakov.com
