@@ -1,0 +1,92 @@
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    {{ with .Site.Params.facebook }}
+                        <a class="button-square button-social hint--top" data-hint="Facebook" title="Facebook" href="{{ . }}">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.vkontakte }}
+                        <a class="button-square button-social hint--top" data-hint="VK" title="VK" href="{{ . }}">
+                            <i class="fa fa-vk"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.instagram }}
+                        <a class="button-square button-social hint--top" data-hint="Instagram" title="Instagram" href="{{ . }}">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    {{ end }}
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                    {{ with .Site.Params.goodreads }}
+                        <a class="button-square button-social hint--top" data-hint="Goodreads" title="Goodreads" href="{{ . }}">
+                            <i class="fa fa-book"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.steam }}
+                        <a class="button-square button-social hint--top" data-hint="Steam" title="Steam" href="{{ . }}">
+                            <i class="fa fa-steam"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.twitch }}
+                        <a class="button-square button-social hint--top" data-hint="Twitch" title="Twitch" href="{{ . }}">
+                            <i class="fa fa-twitch"></i>
+                        </a>
+                    {{ end }}
+                    <br />
+                    {{ with .Site.Params.reddit }}
+                        <a class="button-square button-social hint--top" data-hint="Reddit" title="Reddit" href="{{ . }}">
+                            <i class="fa fa-reddit-alien"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.hackernews }}
+                        <a class="button-square button-social hint--top" data-hint="Hacker News" title="Hacker News" href="{{ . }}">
+                            <i class="fa fa-hacker-news"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.deviantart }}
+                        <a class="button-square button-social hint--top" data-hint="DeviantArt" title="DeviantArt" href="{{ . }}">
+                            <i class="fa fa-deviantart"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.pinterest }}
+                        <a class="button-square button-social hint--top" data-hint="Pinterest" title="Pinterest" href="{{ . }}">
+                            <i class="fa fa-pinterest"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.artstation }}
+                        <a class="button-square button-social hint--top" data-hint="ArtStation" title="ArtStation" href="{{ . }}">
+                            <i class="fa fa-paint-brush"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.imdb }}
+                        <a class="button-square button-social hint--top" data-hint="IMDB" title="IMDB" href="{{ . }}">
+                            <i class="fa fa-film"></i>
+                        </a>
+                    {{ end }}
+                    {{ with .Site.Params.myanimelist }}
+                        <a class="button-square button-social hint--top" data-hint="MyAnimeList" title="MyAnimeList" href="{{ . }}">
+                            <i class="fa fa-question"></i>
+                        </a>
+                    {{ end }}
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; {{ .Site.LastChange.Format "2006" }} / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="{{ .Site.BaseURL }}js/jquery-1.11.3.min.js"></script>
+        <script src="{{ .Site.BaseURL }}js/jquery.fitvids.js"></script>
+        <script src="{{ .Site.BaseURL }}js/scripts.js"></script>
+    </body>
+</html>
