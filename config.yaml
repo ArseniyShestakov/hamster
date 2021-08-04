@@ -12,7 +12,7 @@ Author:
 Params:
   intro: true
   headline: "Arseniy Shestakov"
-  description: "I am a software engineer, gamer, traveller and Linux enthusiast."
+  description: "I am a software engineer, gamer, traveller and Linux enthusiast"
   photo: "/photo.jpg"
 #  gplus: "https://google.com/+XXX"
   github: "https://github.com/ArseniyShestakov"
