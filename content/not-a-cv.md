@@ -53,6 +53,8 @@ I love programming and my key strength is ability to rapidly learn anything that
 
 # Soft skills
 
-* I am fluent in English and Russian, but also interested in learning other languages. 
+* I am fluent in English and Russian, but also interested in learning other languages.
+
+* I truly love to meet new people and communicate with them. I'm open minded person with a lot of friends across the globe and I use any opportunity to meet someone new.
 
 * Experience of maintaining of open source project and helping end-users as volunteer gave me confidence in my teamwork and organizational skills.
