@@ -47,6 +47,8 @@ I love programming and my key strength is ability to rapidly learn anything that
 
 * **System administration:** For more than decade I have been using Linux-based operating systems my primary OS for both my personal desktop and server infrastructure. I have a deep and broad experience with building, deploying, configuring and debugging open source software. I have used tools for automation and management for servers, virtual machines and containers: libvirt, Ansible, Docker, etc.
 
+* **Git:** I have extensive experience managing my own repositories as well as bisecting, rebasing and merging other people code. I'm not scared by merge conflicts, a need to rewrite history or dig into reflog.
+
 * **Security analytics** My another hobby is security and pentesting so I keep eye on modern attack and defense techniques.
 
 * **Front end and design:** Due to my web development background, I have experience with JavaScript, CSS and many frameworks and libraries. I only use my web design skills for my own projects, but my experience help me to see and avoid bad UI / UX. 
