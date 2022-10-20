@@ -145,6 +145,6 @@ I hope you find some of my advice useful. I'll try to keep this post updated wit
 
 # For fellow immigrants
 
-This is specifically addressed for those from post-Soviet countries. There are two useful groups on Telegram that might help you to bootstrap your Linkedin network: [RelocateIt](https://t.me/relocate_it) and [RelocateIt](https://t.me/Rabota_LinkedIn). Check them out, read the rules and see how others do it. On those groups you can share your profile link along few lines about yourself and get some initial connections.
+This is specifically addressed for those from post-Soviet countries. There are two useful groups on Telegram that might help you to bootstrap your Linkedin network: [RelocateIt](https://t.me/relocate_it) and [Linkedin Jobs](https://t.me/Rabota_LinkedIn). Check them out, read the rules and see how others do it. On those groups you can share your profile link along few lines about yourself and get some initial connections.
 
 Also once your profile is English is ready feel free to [send me connection request](https://www.linkedin.com/in/arseniyshestakov/). I do accept connections from everyone with filled profile. I have and can also share your posts about looking for a job as long as they're in English.
