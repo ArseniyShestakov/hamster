@@ -1,35 +1,54 @@
 +++
 title = "Yandex Services Source Code Leak"
-description = ""
+description = "Short overview of leaked contents"
 tags = [
-    "security",
+    "cybersecurity",
     "hobby"
 ]
 date = "2023-01-26"
 comments = true
 +++
 
-Just a few hours ago I found [mention on Twitter](https://twitter.com/dbalakov/status/1618383988351201282) that proprietary source code of Russian giant Yandex been leaked on online community called *BreachForums*.
+Just a few hours ago I found [mention on Twitter](https://twitter.com/dbalakov/status/1618383988351201282) that proprietary source code of Russian giant Yandex been leaked on online community called *BreachForums*. In this post I'll share results of my **friend** digging into said archives.
 
-# What's inside
+Important details about torrent:
 
-It looks like at least source code for all major services been leaked:
-
-* Search Engine and Indexing Bot
-* Yandex.Taxi - Uber-like taxi service
-* Yandex.Direct - Ads service like Google Ads
-* Yandex.Mail - Mail service like GMail
-* Yandex.Disk - File storage service like Google drive
-
-And at least backend part of majority of other company services is there.
+* It does not contain git history
+* No pre-built binaries for most of software with only few exceptions
+* There are no pre-trained ML models with some exceptions
 
 # Is this leak real?
 
 I personally never worked at Yandex, but I know several people who worked there at different times or work there still. I verified that at least some of archives for sure contain modern source code for company services as well as documentation pointing to real intranet URLs.
 
-# Security implication.
+# What's inside
 
-Since this is leak only contain contents of git repositories there is no personal data. There are at least some API keys, but they are likely only been used for testing deployment only.
+It looks like at least source code for all major services of Yandex been leaked:
+
+* Search Engine and Indexing Bot
+* Alice - AI assistant like Siri / Alexa
+* Taxi - Uber-like taxi service
+* Direct - Ads service like Google Ads / Adwords
+* Mail - Mail service like GMail
+* Disk - File storage service like Google drive
+* Market - Marketplace like Amazon
+
+And at least backend part of majority of other company services is there.
+
+# Full file list of files:
+
+If you dont want to download torrent, but curious of what's inside you can get list of files from following gist:
+
+[https://gist.github.com/ArseniyShestakov/53a80e3214601aa20d1075872a1ea989](https://gist.github.com/ArseniyShestakov/53a80e3214601aa20d1075872a1ea989)
+
+You can also clone it like normnal git repository:
+
+```
+git clone https://gist.github.com/ArseniyShestakov/53a80e3214601aa20d1075872a1ea989
+```
+
+List of all files can be obtained with [following commands](https://gist.github.com/ArseniyShestakov/4863f6b30967ad70ac62f0ae324e00b2).
+
 
 # Full list of files in torrent
 
@@ -52,3 +71,7 @@ ci.tar.bz2.part                     extsearch.tar.bz2.part              maps_adv
 classifieds.tar.bz2.part            frontend.tar.bz2.part               market.tar.bz2.part                 search.tar.bz2
 client_analytics.tar.bz2.part       fuzzing.tar.bz2                     metrika.tar.bz2.part                security.tar.bz2
 ```
+
+# Security implications.
+
+Since this is leak only contain contents of git repositories there is no personal data. There are at least some API keys, but they are likely only been used for testing deployment only.
