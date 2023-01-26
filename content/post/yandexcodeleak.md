@@ -1,6 +1,6 @@
 +++
 title = "Yandex Services Source Code Leak"
-description = "Short overview of leaked contents"
+description = "Short overview of breach contents"
 tags = [
     "cybersecurity",
     "hobby"
@@ -13,9 +13,15 @@ Just a few hours ago I found [mention on Twitter](https://twitter.com/dbalakov/s
 
 Important details about torrent:
 
-* It does not contain git history
+* It just content of repository without anything else.
+* All files are dated back to [24 February 2022](https://en.wikipedia.org/wiki/Russo-Ukrainian_War).
+* It does not contain git history, mostly just code
 * No pre-built binaries for most of software with only few exceptions
 * There are no pre-trained ML models with some exceptions
+
+# Why is this big?
+
+Yandex is one of largest IT companies in Russia. Within country it provide wider range of services than Google. Imagine one company that replace Google, Uber, Amazon, Netflix and Spotify.
 
 # Is this leak real?
 
@@ -26,14 +32,19 @@ I personally never worked at Yandex, but I know several people who worked there 
 It looks like at least source code for all major services of Yandex been leaked:
 
 * Search Engine and Indexing Bot
+* Maps - Like Google Maps and Street View
 * Alice - AI assistant like Siri / Alexa
 * Taxi - Uber-like taxi service
 * Direct - Ads service like Google Ads / Adwords
 * Mail - Mail service like GMail
 * Disk - File storage service like Google drive
 * Market - Marketplace like Amazon
+* Travel - Like a Booking.com plus Airplane, Train and Bus tickets
+* Yandex360 - Like Google Workspaces for services on your own domain
+* Cloud - Probably not all infrastructure code was leaked.
 
 And at least backend part of majority of other company services is there.
+Largest archive called "frontend" is yet to be explored.
 
 # Full file list of files:
 
