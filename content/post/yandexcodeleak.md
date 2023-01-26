@@ -19,6 +19,8 @@ Important details about torrent:
 * No pre-built binaries for most of software with only few exceptions
 * There are no pre-trained ML models with some exceptions
 
+*This post is a work-in-progress and will be updated with more details.*
+
 # Why is this big?
 
 Yandex is one of largest IT companies in Russia. Within country it provide wider range of services than Google. Imagine one company that replace Google, Uber, Amazon, Netflix and Spotify.
@@ -42,6 +44,8 @@ It looks like at least source code for all major services of Yandex been leaked:
 * Travel - Like a Booking.com plus Airplane, Train and Bus tickets
 * Yandex360 - Like Google Workspaces for services on your own domain
 * Cloud - Probably not all infrastructure code was leaked.
+* Pay - Payment processing like Stripe, but with limited set of features
+* Metrika - Like Google Analytics
 
 And at least backend part of majority of other company services is there.
 Largest archive called "frontend" is yet to be explored.
