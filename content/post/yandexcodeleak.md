@@ -21,7 +21,7 @@ Important details about torrent:
 
 # Non-commercial announcement
 
-Please consider donating to [Helping Hand](https://handofhelp.com.ua) for Ukraine Relief. This is small charity friend of mine work for and it help civilians affected by Russian agression. Any amount you donate will be huge help for them. Thanks for reading this bit!
+Please consider donating to [Helping Hand](https://handofhelp.com.ua) for Ukraine Relief. This is small charity friend of mine [Alexander Kubrak](https://www.facebook.com/alexander.kubrak) work for and it help civilians affected by Russian agression. Any amount you donate will be huge help for them.
 
 # Why is this big?
 
