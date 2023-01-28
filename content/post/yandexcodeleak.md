@@ -92,3 +92,10 @@ client_analytics.tar.bz2.part       fuzzing.tar.bz2                     metrika.
 # Security implications.
 
 Since this is leak only contain contents of git repositories there is no personal data. There are at least some API keys, but they are likely only been used for testing deployment only.
+
+# Also seen on:
+
+* [Bleeping Computer](https://www.bleepingcomputer.com/news/security/yandex-denies-hack-blames-source-code-leak-on-former-employee/)
+* [Techradar](https://www.techradar.com/news/yandex-denies-it-was-hacked-says-rogue-employee-to-blame-for-breach)
+* [Forbes (Russia)](https://www.forbes.ru/tekhnologii/484285-kod-v-meske-cto-my-uznali-iz-utecki-dannyh-andeksa-i-k-cemu-ona-privedet)
+* [Meduza (Russia)](https://meduza.io/news/2023/01/26/v-set-vylozhili-chast-ishodnyh-kodov-yandeksa-kompaniya-podtverdila-utechku-no-podcherknula-chto-polzovatelyam-nichego-ne-ugrozhaet)
