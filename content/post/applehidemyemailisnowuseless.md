@@ -7,7 +7,7 @@ tags = [
     "email"
 ]
 date = "2026-06-16"
-comments = true
+comments = false
 +++
 
 Yesterday, June 15, 2026, a small and unimportant announcement appeared in Apple developer news: [New domain for Sign in with Apple and iCloud+ Hide My Email](https://developer.apple.com/news/?id=sus6t6ab).
